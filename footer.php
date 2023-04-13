@@ -1,6 +1,11 @@
 <footer class="footer">
-  <h1 class="logo"><a href="index.php">Shop</a></h1>
-  <a href="adminLogin.php">Admin Login</a>
-  <p>Created by Joshua Cleverley, 337669</p>
-  <p>For the Introduction to Middleware module</p>
+  <div class="footer-link-container">
+    <p class="footer-text"><a class=" logo" href="index.php">Logo</a></p>
+    <p class="footer-text"><a href="adminLogin.php" class="footer-link">Admin Login</a></p>
+  </div>
+  <div class="footer-text-container">
+    <p class="footer-text">Created by Joshua Cleverley, 337669</p>
+    <p class="footer-text">For the Introduction to Middleware module</p>
+    <p class="footer-text">Icons by <a class="footer-link" href="https://icons8.com/">Icons8</a></p>
+  </div>
 </footer>

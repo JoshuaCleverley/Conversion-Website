@@ -1,0 +1,166 @@
+/* Global styles */
+:root {
+  --background: #000000;
+  --buttons: #1f1f1f;
+  --text: #ffffff;
+  --highlight: #6a1785;
+}
+
+body {
+  background-color: var(--background);
+  font-family: "Roboto", sans-serif;
+  font-size: 16px;
+  width: 100vw;
+  margin: 0;
+}
+
+a {
+  color: var(--text);
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+  scale: 1.1;
+}
+
+.logo {
+  color: var(--highlight);
+  font-size: 2.3rem;
+  font-weight: 700;
+  text-decoration: none;
+}
+
+.logo:hover {
+  text-decoration: none;
+}
+
+/* Header styles */
+header {
+  display: flex;
+  flex-direction: column;
+}
+
+.header {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  padding: 2rem 6rem;
+  width: 100vw;
+}
+
+.hamburger-menu {
+  display: none;
+}
+
+.desktop-nav {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  margin-left: 8rem;
+  gap: 1.5rem;
+}
+
+.mobile-nav {
+  display: none;
+}
+
+.nav-item {
+  color: var(--text);
+  font-size: 1.5rem;
+  text-decoration: none;
+}
+
+.active {
+  text-decoration: underline;
+}
+
+.basket_icon {
+  color: var(--text);
+}
+
+.basket-icon-count {
+  color: var(--text);
+}
+
+@media (max-width: 768px) {
+  .header {
+    padding: 1rem 3rem;
+    overflow: hidden;
+  }
+
+  .hamburger-menu {
+    color: var(--text);
+    display: block;
+  }
+
+  .desktop-nav {
+    display: none;
+  }
+
+  .mobile-nav {
+    display: none;
+  }
+
+  .mobile-nav-active {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    margin-left: 1rem;
+    margin-bottom: 1rem;
+    align-items: start;
+    gap: 1rem;
+    justify-content: start;
+    overflow: hidden;
+  }
+}
+
+/* Footer styles */
+.footer {
+  background-color: var(--buttons);
+  color: var(--text);
+  position: relative;
+  height: 9rem;
+}
+
+.footer-link-container {
+  position: absolute;
+  bottom: 0.6rem;
+  left: 2.4rem;
+}
+
+.footer-link {
+  text-decoration: underline;
+}
+
+.footer-text-container {
+  position: absolute;
+  bottom: 0.6rem;
+  right: 2.4rem;
+}
+
+.footer_text {
+}
+
+@media (max-width: 768px) {
+  .footer {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: auto;
+  }
+
+  .footer-link-container {
+    position: static;
+  }
+
+  .footer-text-container {
+    position: static;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+}
