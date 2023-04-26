@@ -46,6 +46,7 @@
           </div>';
         }
       }
+      $conn->close();
       ?>
     </div>
   </section>
