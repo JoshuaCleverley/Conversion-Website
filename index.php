@@ -9,6 +9,7 @@
   <link rel="stylesheet" type="text/css" href="reset.css">
   <link rel="stylesheet" type="text/css" href="css/style.css">
   <script src="js/hamburger.js" type="text/javascript" defer></script>
+  <script src="js/basket.js" type="text/javascript" defer></script>
 </head>
 
 <body>
