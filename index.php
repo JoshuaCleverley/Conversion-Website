@@ -77,8 +77,13 @@
             <img class="product-image" src="images/' . $row["image"] . '" />
             <p class="product-info product-name">' . $row["productName"] . '</p>
             <p class="product-info product-price">£' . $row["price"] . '</p>
-            <form class="product-form">
-              <input class="product-number-input" type="number" value="1" />
+            <form class="product-form" onsubmit="
+              event.preventDefault();
+              addToBasket(' . $row["productID"] . ', document.getElementById(\'' . $row["productID"] . '\').value);
+              document.getElementById(\'' . $row["productID"] . '\').value = 1;
+              alert(\'Added to basket!\');
+            ">
+              <input class="product-number-input" id="' . $row["productID"] . '" type="number" value="1" />
               <button class="product-submit-button" type="submit">Add to basket</button>
             </form>
           </div>';
