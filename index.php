@@ -82,7 +82,6 @@
               event.preventDefault();
               addToBasket(' . $row["productID"] . ', document.getElementById(\'' . $row["productID"] . '\').value);
               document.getElementById(\'' . $row["productID"] . '\').value = 1;
-              alert(\'Added to basket!\');
             ">
               <input class="product-number-input" id="' . $row["productID"] . '" type="number" value="1" />
               <button class="product-submit-button" type="submit">Add to basket</button>

@@ -88,6 +88,10 @@ header {
 }
 
 .basket_icon span {
+  display: none;
+}
+
+.basket_icon span:not(.hidden) {
   background-color: red;
   position: absolute;
   right: -0.2rem;
