@@ -1,3 +1,5 @@
+<?php require 'lib/addToBasket.php' ?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -9,7 +11,11 @@
   <link rel="stylesheet" type="text/css" href="reset.css">
   <link rel="stylesheet" type="text/css" href="css/style.css">
   <script src="js/hamburger.js" type="text/javascript" defer></script>
-  <script src="js/basket.js" type="text/javascript" defer></script>
+  <script>
+  if (window.history.replaceState) {
+    window.history.replaceState(null, null, window.location.href);
+  }
+  </script>
 </head>
 
 <body>
@@ -78,13 +84,10 @@
             <img class="product-image" src="images/' . $row["image"] . '" />
             <p class="product-info product-name">' . $row["productName"] . '</p>
             <p class="product-info product-price">£' . $row["price"] . '</p>
-            <form class="product-form" onsubmit="
-              event.preventDefault();
-              addToBasket(' . $row["productID"] . ', document.getElementById(\'' . $row["productID"] . '\').value);
-              document.getElementById(\'' . $row["productID"] . '\').value = 1;
-            ">
-              <input class="product-number-input" id="' . $row["productID"] . '" type="number" value="1" />
-              <button class="product-submit-button" type="submit">Add to basket</button>
+            <form class="product-form" action="index.php" method="post">
+              <input type="hidden" id="productID" name="productID" value="' . $row["productID"] . '" />
+              <input class="product-number-input" name="quantity" type="number" value="1" />
+              <button class="product-submit-button" name="submit" type="submit">Add to basket</button>
             </form>
           </div>';
         }
