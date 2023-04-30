@@ -39,6 +39,26 @@ function getFeaturedProducts($conn)
   return $res;
 }
 
+function getOrderDetails($conn, $orderID)
+{
+  // Query the database
+  $query = "SELECT * FROM Orders WHERE orderID = '$orderID'";
+  $res = $conn->query($query);
+
+  // Return response
+  return $res;
+}
+
+function getItemsForOrder($conn, $orderID)
+{
+  // Query the database
+  $query = "SELECT * FROM Items WHERE orderID = '$orderID'";
+  $res = $conn->query($query);
+
+  // Return response
+  return $res;
+}
+
 // Create a new order item in the database
 function newOrder($conn, $firstName, $lastName, $phoneNumber, $email, $addressOne, $addressTwo, $postcode, $city, $country, $date)
 {
