@@ -32,9 +32,33 @@ function getProducts($conn)
 function getFeaturedProducts($conn)
 {
   // Query the database
-  $query = "SELECT * FROM Products WHERE Featured = 1";
+  $query = "SELECT * FROM Products WHERE featured = 1";
   $res = $conn->query($query);
 
   // Return response
   return $res;
+}
+
+// Create a new order item in the database
+function newOrder($conn, $firstName, $lastName, $phoneNumber, $email, $addressOne, $addressTwo, $postcode, $city, $country, $date)
+{
+  // Query the database
+  $query = "INSERT INTO Orders (firstName, lastName, phoneNumber, email, addressOne, addressTwo, postcode, city, country, orderDate) VALUES ('$firstName', '$lastName', '$phoneNumber', '$email', '$addressOne', '$addressTwo', '$postcode', '$city', '$country', '$date')";
+  $conn->query($query);
+  $last_id = $conn->insert_id;
+
+  // Return last_id
+  return $last_id;
+}
+
+// Create a new order item in the database
+function newItem($conn, $orderID, $productID, $quantity)
+{
+  // Query the database
+  $query = "INSERT INTO Items (orderID, productID, quantity) VALUES ('$orderID', '$productID', '$quantity')";
+  $conn->query($query);
+  $last_id = $conn->insert_id;
+
+  // Return last_id
+  return $last_id;
 }

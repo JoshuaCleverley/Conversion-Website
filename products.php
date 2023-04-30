@@ -12,6 +12,7 @@
   <link rel="stylesheet" type="text/css" href="css/style.css">
   <script src="js/hamburger.js" type="text/javascript" defer></script>
   <script>
+  // Stop the browser from resubmitting the form when the page is refreshed
   if (window.history.replaceState) {
     window.history.replaceState(null, null, window.location.href);
   }

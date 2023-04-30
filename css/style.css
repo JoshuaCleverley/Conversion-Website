@@ -334,3 +334,60 @@ section button:hover {
   scale: 1;
   filter: brightness(1.2);
 }
+
+/* basket.php styles */
+.checkout-form {
+  display: flex;
+  flex-direction: column;
+}
+
+.basket-item {
+  width: 80vw;
+  display: flex;
+  flex-direction: row;
+
+  align-items: center;
+  justify-content: space-between;
+  background-color: var(--buttons);
+  border-radius: 0.5rem;
+  padding: 1rem;
+  margin-bottom: 1rem;
+}
+
+.checkout-image {
+  height: 7rem;
+  border-radius: 0.5rem;
+}
+
+.checkout-number-input {
+  width: 3rem;
+  height: 2rem;
+  border-radius: 0.5rem;
+  border: none;
+  padding-left: 0.5rem;
+}
+
+.checkout-form-details {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 1rem;
+}
+
+.checkout-form-input {
+  width: 20rem;
+  height: 2rem;
+  border-radius: 0.5rem;
+  border: none;
+  padding-left: 0.5rem;
+}
+
+.checkout-form-button-container {
+  display: flex;
+  flex-direction: row;
+  gap: 1rem;
+  align-items: center;
+  justify-content: center;
+}
