@@ -17,6 +17,17 @@ function authenticateAdmin($conn, $username, $password)
   else return false;
 }
 
+// Get a product from database
+function getProduct($conn, $productID)
+{
+  // Query the database
+  $query = "SELECT * FROM Products WHERE productID = '$productID'";
+  $res = $conn->query($query);
+
+  // Return response
+  return $res;
+}
+
 // Get products from database
 function getProducts($conn)
 {
