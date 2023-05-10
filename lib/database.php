@@ -50,6 +50,16 @@ function getFeaturedProducts($conn)
   return $res;
 }
 
+function getOrders($conn)
+{
+  // Query the database
+  $query = "SELECT * FROM Orders";
+  $res = $conn->query($query);
+
+  // Return response
+  return $res;
+}
+
 function getOrderDetails($conn, $orderID)
 {
   // Query the database
@@ -68,6 +78,39 @@ function getItemsForOrder($conn, $orderID)
 
   // Return response
   return $res;
+}
+
+function getItemsForProduct($conn, $productID)
+{
+  // Query the database
+  $query = "SELECT * FROM Items WHERE productID = '$productID'";
+  $res = $conn->query($query);
+
+  // Return response
+  return $res;
+}
+
+function getTotalSoldItemsForProduct($conn, $productID)
+{
+  // Query the database
+  $query = "SELECT SUM(quantity) AS total FROM Items WHERE productID = '$productID'";
+  $res = $conn->query($query);
+
+
+  // Return response
+  if ($res->num_rows == 0) return 0;
+  return $res->fetch_assoc()['total'];
+}
+
+function getTotalRevenueForProduct($conn, $productID)
+{
+  // Query the database
+  $query = "SELECT SUM(Items.quantity * Products.price) AS total FROM Items, Products WHERE productID = '$productID'";
+  $res = $conn->query($query);
+
+  // Return response
+  if ($res->num_rows == 0) return 0;
+  return $res->fetch_assoc()['total'];
 }
 
 // Create a new order item in the database

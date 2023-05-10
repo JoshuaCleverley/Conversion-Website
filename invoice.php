@@ -20,11 +20,11 @@ $order = $orderDetails->fetch_assoc();
 $items = getItemsForOrder($conn, $orderID);
 
 // Add all items to an array, so we can loop through them later. Also add up total price
-$itemsArray = array();
 $totalPrice = 0;
+$totalItems = 0;
 while ($item = $items->fetch_assoc()) {
-  array_push($itemsArray, $item);
   $totalPrice += getProduct($conn, $item['productID'])->fetch_assoc()['price'] * $item['quantity'];
+  $totalItems += $item['quantity'];
 }
 
 $conn->close();
@@ -63,20 +63,31 @@ $conn->close();
             <th>Price</th>
           </tr>
           <?php
-          foreach ($itemsArray as $item) {
+          // Connect to database
+          $conn = mysqli_connect($servername, $username, $password, $dbname);
+          if (!$conn) die("Connection failed: " . mysqli_connect_error()); // Inform user if the connection doesn't work
 
-            echo $item;
+          // Get items for order
+          $items = getItemsForOrder($conn, $orderID);
+
+          // Loop through items, to display them in a table
+          while ($item = $items->fetch_assoc()) {
             $product = getProduct($conn, $item['productID']);
-            if ($product->num_rows == 0) die("Product doesn't exist"); // Inform user if the product doesn't exist
             $product = $product->fetch_assoc();
-
             echo "
               <tr>
                 <td>" . $product["productName"] . "</td>
                 <td>" . $item["quantity"] . "</td>
-                <td>$" . $product["price"] . "</td>
+                <td>£" . $product["price"] * $item["quantity"] . "</td>
               </tr>";
-          } ?>
+          }
+          $conn->close();
+          ?>
+          <tr>
+            <td>Total</td>
+            <td><?php echo $totalItems ?></td>
+            <td>£<?php echo $totalPrice ?></td>
+          </tr>
         </table>
       </div>
   </section>

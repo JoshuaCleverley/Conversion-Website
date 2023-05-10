@@ -8,6 +8,14 @@ if ($currentPage == "index.php") {
 } else if ($currentPage == "products.php") {
   $productsClass .= " active";
 }
+
+$count = 0;
+if (isset($_COOKIE['basket'])) {
+  $basket = json_decode($_COOKIE['basket'], true);
+  foreach ($basket as $productID => $quantity) {
+    $count += $quantity;
+  }
+}
 ?>
 
 <header>
@@ -27,17 +35,8 @@ if ($currentPage == "index.php") {
     <a href="basket.php" class="basket_icon">
       <img
         src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAACXBIWXMAAAsTAAALEwEAmpwYAAABWElEQVR4nO2WMU4CURRFpxIbLCggsRYXIC5AXIBogqVuADegG8AN6AZ0A9pQakIBDVgbsbLTTm2ojvlyJyQ6Q97E9xvDTab5//De4TPzhiRZpmCAFeAEGAKfugZAJ+zFbr4OPJCfcWBiNS+pQcgL0AbKug6AR+2NopwEs2NPm1cy9ivaC+nEEBiqeHsBcyhmEEPgQ8XLC5g1Me9/bdbDPz1r81XipWQRqAp+/bH+HcPnf3GhlparFoG64CdHgYmWNywCDcEjR4F0fmxZBJqC7xwF7rW8YxFoCb5JnALcquaeBT4WfOUocK2aR0VG7oWjwKV5RANngruOAueqeWqBu2bYLmD/UhQ5LruA/WelyA1jF7Df2MwfmZajwL750WY+NJqOArtZwy0PTv/zNRwFtlVzbIGfBdcdBTZVc2KB3wTXHAVqWa/4PHhKvEwtAv2IAn2nQ13mH+ULuCrG8NnpP3EAAAAASUVORK5CYII=">
-      <span id="basket_count">
-        <?php
-        if (isset($_COOKIE['basket'])) {
-          $basket = json_decode($_COOKIE['basket'], true);
-          $count = 0;
-          foreach ($basket as $productID => $quantity) {
-            $count += $quantity;
-          }
-          echo $count;
-        }
-        ?>
+      <span id="basket_count" class="<?php if ($count <= 0) echo "hide" ?>">
+        <?php echo $count ?>
       </span>
     </a>
   </div>

@@ -35,7 +35,7 @@ if (isset($_POST['submit'])) {
   $conn->close();
   setcookie('basket', '', time() - 3600, '/');
   header('Location: invoice.php?orderID=' . $orderID);
-} else if (isset($_POST['clear'])) {
+} else if (isset($_GET['clear'])) {
   setcookie('basket', '', time() - 3600, '/');
   header('Location: basket.php');
 } else {

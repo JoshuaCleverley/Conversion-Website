@@ -68,7 +68,7 @@
               </div>
 
               <div class="checkout-form-button-container">
-                <button name="clear">Clear Basket</button>
+                <a href="checkout.php?clear=true"><button name="clear" type="button">Clear Basket</button></a>
                 <button type="submit" name="submit">Checkout</button>
               </div>';
       }
